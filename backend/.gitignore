@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.Python
+build/
+dist/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# Environment variables
+.env
+!.env.example
+
+# Databases
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# MLflow
+mlruns/
+mlartifacts/
+
+# Data + models (docker bind mounts)
+data/
+models/
+
+# Logs
+*.log
+nginx/logs/
+
+# Docker
+.docker/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Uploaded files (test manuals etc.)
+uploads/
