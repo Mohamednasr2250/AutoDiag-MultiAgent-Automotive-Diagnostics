@@ -8,8 +8,10 @@ StructuredTool with typed Pydantic input schemas.
 import subprocess
 import tempfile
 import os
+import sys
 from pydantic import BaseModel, Field
 from langchain.tools import StructuredTool
+
 
 from fault_graph import (
     explore_related_codes, find_root_cause_chain, find_common_cause,
@@ -225,7 +227,7 @@ def run_diagnostic_code(code: str) -> str:
         f.write(code)
         path = f.name
     try:
-        result = subprocess.run(["python3", path], capture_output=True, text=True,
+        result = subprocess.run([sys.executable, path], capture_output=True, text=True,
             timeout=5, cwd=tempfile.gettempdir())
         output = result.stdout.strip() or result.stderr.strip()
         return output if output else "Code executed with no output."

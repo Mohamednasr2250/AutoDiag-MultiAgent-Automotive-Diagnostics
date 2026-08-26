@@ -154,10 +154,13 @@ async def lifespan(app: FastAPI):
     except Exception as e:
         print(f"⚠️ Pinecone connection failed: {e}")
 
-    # MLflow
-    mlflow.set_tracking_uri(os.environ.get("MLFLOW_TRACKING_URI", "http://localhost:5000"))
-    mlflow.set_experiment("autodiag-pro")
-    print("✅ MLflow configured")
+        # MLflow
+    try:
+        mlflow.set_tracking_uri(os.environ.get("MLFLOW_TRACKING_URI", "http://localhost:5000"))
+        mlflow.set_experiment("autodiag-pro")
+        print("✅ MLflow configured")
+    except Exception as e:
+        print(f"⚠️ MLflow tracking failed (continuing without it): {e}")
 
     # Orchestrator
     orchestrator = Orchestrator(pinecone_store)
