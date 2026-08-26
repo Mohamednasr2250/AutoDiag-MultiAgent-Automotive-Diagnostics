@@ -166,7 +166,7 @@ async def lifespan(app: FastAPI):
     orchestrator = Orchestrator(pinecone_store)
     print("✅ Orchestrator ready")
 
-    print("✅ AutoDiag Pro ready!")
+    print("✅ AutoDiag Pro ready!") 
     yield
 
     # Shutdown
